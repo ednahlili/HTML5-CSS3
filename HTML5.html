@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="zh-cn" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset=utf-8">
+    <title>HTML5教程</title>
+    <!--[if lt IE 9]>
+    <script src="http://apps.bdimg.com/libs/html5shiv/3.7/html5shiv.min.js"></script>
+    <![endif]-->
+    <!--在 IE 浏览器的版本小于 IE9 时将读取 html5.js 文件，并解析它。-->
+
+    <link rel="icon" href="C:/Users/Administrator/Desktop/电商网站/images/shopIcon2.gif" type="image/gif" sizes="32*32"/>
+    <!--为title添加一个图标-->
+    <style type="text/css">
+        #div1, #div2 {
+            float: left;
+            width: 100px;
+            height: 35px;
+            margin: 10px;
+            padding: 10px;
+            border: 1px solid #aaaaaa;
+        }
+
+        .clearfix {
+            clear: both;
+        }
+    </style>
+    <script>
+        function changColor() {
+            var txt1 = document.getElementById("txt1").value;
+            var txt2 = document.getElementById("txt2").value;
+            var txt3 = document.getElementById("txt3").value;
+            var colors = "rgb(" + txt1 + "," + txt2 + "," + txt3 + ")";
+            /*为什么要加号*/
+            document.getElementById("color").style.backgroundColor = colors;
+        }
+        /*拖动*/
+        function allowDrop(ev) {
+            ev.preventDefault();
+        }
+
+        function drag(ev) {
+            ev.dataTransfer.setData("Text", ev.target.id);
+        }
+
+        function drop(ev) {
+            ev.preventDefault();
+            var data = ev.dataTransfer.getData("Text");
+            ev.target.appendChild(document.getElementById(data));
+        }
+    </script>
+</head>
+<body>
+
+<!--使用逻辑属性值-->
+<input type="checkbox" checked/>
+<input type="checkbox" checked=""/>
+<input type="checkbox" checked="checked"/>
+<input type="checkbox"/>
+<!--前三行都是属性为true-->
+<hr/>
+<article>
+    <header>
+        <h1>第一章</h1>
+    </header>
+    <section>文章主要内容</section>
+    <section>
+        <aside>其他相关文章</aside>
+</article>
+<aside>右侧管理菜单</aside>
+
+<label>邮箱：
+    <input type=email form="UserForm" name="email" placeholder="name@domain.com" require="true">
+    <small>sddhhh</small>
+    fdfbgdh
+    <!--可用于右边注释-->
+</label>
+
+<!--部分区域收缩-->
+<details>
+    <summary>页面说明</summary>
+    本页面生成于2017年3月2号
+</details>
+<!--progress元素：进度条-->
+<h1>正在加载中</h1>
+<p>
+    <progress min="0" max="100" value="60"><span>60</span>%</progress>
+</p>
+<!--meter元素-->
+<p>
+    京东：
+    <meter value="65" min="0" max="100" low="60" high="80" title="65分">65</meter>
+    京东：
+    <meter value="85" min="0" max="100" low="60" high="80" title="85分">85</meter>
+</p>
+
+<!--公共属性-->
+<div id="div1" ondrop="drop(event)" ondragover="allowDrop(event)">
+    <img src="C:\Users\Administrator\Desktop\电商网站\images\logo.jpg" draggable="true" ondragstart="drag(event)" id="drag1"
+         width="88"
+         height="31">
+</div>
+<div id="div2" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+<br/>
+
+<!--时间选择-->
+<form class="clearfix">
+    <fieldset>
+        <legend>date and time:</legend>
+        <input name="dateTime1" type="date"/>
+        <!--选取日月年-->
+        <input name="dateTime2" type="time"/>
+        <!--选取时间（小时和分钟）-->
+        <br/>
+        <input name="dateTime3" type="month"/>
+        <!--选取月年-->
+        <input name="dateTime4" type="week"/>
+        <!--选取周年-->
+        <br/>
+        <input name="dateTime5" type="datetime"/>
+        <!--chrome浏览器不支持-->
+        <!--选取时间、日月年（UTC时间）-->
+        <input name="dateTime6" type="datetime-local"/>
+        <!--选取时间、日月年（本地时间）-->
+    </fieldset>
+</form>
+<br/>
+<!--上传文件-->
+<form>
+    <input type="file"/>
+</form>
+
+<!--search类型-->
+<form>
+    <input type="search"/>
+    <input type="submit" value="提交"/>
+</form>
+
+<!--邮箱验证-->
+<form>
+    <input type="email"/>
+    <input type="submit" value="提交"/>
+</form>
+
+<!--number类型、数字验证-->
+<form>
+    <p>请选择出生日期</p>
+    <input type="number" min="1900" max="2017" step="1" value="1997"/>年
+    <input type="number" min="1" max="12" step="1" value="1"/>月
+    <input type="number" min="1" max="31" step="1" value="1" step="13"/>日
+    <!--step为间隔，只有13,26有效-->
+    <input type="submit" value="提交"/>
+</form>
+</br>
+<!--创建滑块-->
+<form>
+    <fieldset>
+        <input type="range" id="txt1" min="0" max="255" step="5" value="120" onchange="changColor()"/>
+        <input type="range" min="0" id="txt2" max="255" step="20" value="120" onchange="changColor()"/>
+        <input type="range" min="0" id="txt3" max="255" step="10" value="120" onchange="changColor()"/>
+        <!--step到底怎么用-->
+        <br/>
+        <p id="color" style="width:200px; height:100px;border:1px solid #BDBDBD">拖动滑动条改变颜色</p>
+    </fieldset>
+</form>
+
+
+
+</body>
+</html>
